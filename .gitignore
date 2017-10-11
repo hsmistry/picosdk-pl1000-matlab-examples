@@ -1,0 +1,12 @@
+# .gitignore file for picosdk-pl1000-matlab-examples
+# Untracked files/folders to ignore.
+
+# Windows platforms
+
+**/*.obj
+**/*.lib
+**/*.exp
+
+# All platforms
+
+**/*.h
