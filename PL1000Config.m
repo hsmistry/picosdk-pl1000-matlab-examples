@@ -125,7 +125,7 @@ else
     
 end
 
-%% Set Path for PicoScope Support Toolbox Files if not Installed
+%% Set path for PicoScope Support Toolbox files if not installed
 % Set MATLAB Path to include location of PicoScope Support Toolbox
 % Functions and Classes if the Toolbox has not been installed. Installation
 % of the toolbox is only supported in MATLAB 2014b and later versions.
