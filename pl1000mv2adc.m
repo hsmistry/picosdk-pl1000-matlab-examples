@@ -12,6 +12,6 @@ function adcCounts = pl1000mv2adc(values, maxValue)
     validateattributes(maxValue, {'numeric'}, {'scalar', 'integer', 'positive'});
     
     % Convert data.
-    adcCounts = (values * double(maxValue)) / 2500;
+    adcCounts = (values * double(maxValue)) ./ 2500;
 
 end
