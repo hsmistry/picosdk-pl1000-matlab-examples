@@ -12,6 +12,6 @@ function millivolts = pl1000adc2mv(values, maxValue)
     validateattributes(maxValue, {'numeric'}, {'scalar', 'integer', 'positive'});
     
     % Convert raw data.
-    millivolts = (double(values) * 2500 ./ maxValue);
+    millivolts = (double(values) * 2500 ./ double(maxValue));
 
 end
