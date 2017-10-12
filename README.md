@@ -2,6 +2,13 @@
 
 *picosdk-pl1000-matlab-examples* provides a MATLAB example demonstrating how to call shared library functions to acquire data from the PicoLog<sup>®</sup> 1000 Series Data Loggers.
 
+## Supported models
+
+The examples will work with the following models:
+
+* PicoLog 1012
+* PicoLog 1216
+
 ## Getting started
 
 ### Prerequisites
