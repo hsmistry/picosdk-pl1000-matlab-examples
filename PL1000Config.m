@@ -25,7 +25,6 @@
 %
 % This file can be edited to suit application requirements.
 
-
 %% Set path to shared libraries
 % Set paths to shared library files according to the operating system and
 % architecture.
@@ -125,6 +124,38 @@ else
     error('PL1000Config:OperatingSystemNotSupported', 'Operating system not supported - please contact support@picotech.com');
     
 end
+
+%% Set Path for PicoScope Support Toolbox Files if not Installed
+% Set MATLAB Path to include location of PicoScope Support Toolbox
+% Functions and Classes if the Toolbox has not been installed. Installation
+% of the toolbox is only supported in MATLAB 2014b and later versions.
+%
+% Check if PicoScope Support Toolbox is installed - using code based on
+% <http://stackoverflow.com/questions/6926021/how-to-check-if-matlab-toolbox-installed-in-matlab How to check if matlab toolbox installed in matlab>
+
+pl1000ConfigInfo.psTbxName = 'PicoScope Support Toolbox';
+pl1000ConfigInfo.v = ver; % Find installed toolbox information
+
+if (~any(strcmp(pl1000ConfigInfo.psTbxName, {pl1000ConfigInfo.v.Name})))
+   
+    warning('PL1000Config:PSTbxNotFound', 'PicoScope Support Toolbox not found, searching for folder.');
+    
+    % If the PicoScope Support Toolbox has not been installed, check to see
+    % if the folder is on the MATLAB path, having been downloaded via zip
+    % file.
+    
+    pl1000ConfigInfo.psTbxFound = strfind(path, pl1000ConfigInfo.psTbxName);
+    
+    if (isempty(pl1000ConfigInfo.psTbxFound))
+        
+        warning('PL1000Config:PSTbxDirNotFound', 'PicoScope Support Toolbox directory not found.');
+            
+    end
+    
+end
+
+% Change back to the folder where the script was called from.
+cd(pl1000ConfigInfo.workingDir);
 
 %% Load enumerations and structure information
 % Enumerations and structures are used by certain shared library functions.
