@@ -37,43 +37,47 @@ pl1000StreamingExample.archStr = computer('arch');
 
 pl1000MFile = str2func(strcat('pl1000MFile_', pl1000StreamingExample.archStr));
 
-if ismac()
-   
-    [pl1000NotFound, pl1000Warnings] = loadlibrary('libpl1000.dylib', pl1000MFile, 'alias', 'pl1000');
-    
-    % Check if the library is loaded
-    if ~libisloaded('pl1000')
-    
-        error('PL1000StreamingExample:LibaryNotLoaded', 'Library libpl1000.dylib not loaded.');
-    
-    end
-    
-elseif isunix()
-    
-    [pl1000NotFound, pl1000Warnings] = loadlibrary('libpl1000.so', pl1000MFile, 'alias', 'pl1000');
-    
-    % Check if the library is loaded
-    if ~libisloaded('pl1000')
-    
-        error('PL1000StreamingExample:LibaryNotLoaded', 'Library libpl1000.so not loaded.');
-    
-    end
-    
-elseif ispc()
-    
-    [pl1000NotFound, pl1000Warnings] = loadlibrary('pl1000.dll', pl1000MFile);
-    
-    % Check if the library is loaded
-    if ~libisloaded('pl1000')
-    
-        error('PL1000StreamingExample:LibaryNotLoaded', 'Library pl1000.dll not loaded.');
-    
-    end
-    
-else
-    
-    error('PL1000StreamingExample:OSNotSupported', 'Operating system not supported, please contact support@picotech.com');
-    
+if (~libisloaded('pl1000'))
+
+	if ismac()
+	   
+		[pl1000NotFound, pl1000Warnings] = loadlibrary('libpl1000.dylib', pl1000MFile, 'alias', 'pl1000');
+		
+		% Check if the library is loaded
+		if ~libisloaded('pl1000')
+		
+			error('PL1000StreamingExample:LibaryNotLoaded', 'Library libpl1000.dylib not loaded.');
+		
+		end
+		
+	elseif isunix()
+		
+		[pl1000NotFound, pl1000Warnings] = loadlibrary('libpl1000.so', pl1000MFile, 'alias', 'pl1000');
+		
+		% Check if the library is loaded
+		if ~libisloaded('pl1000')
+		
+			error('PL1000StreamingExample:LibaryNotLoaded', 'Library libpl1000.so not loaded.');
+		
+		end
+		
+	elseif ispc()
+		
+		[pl1000NotFound, pl1000Warnings] = loadlibrary('pl1000.dll', pl1000MFile);
+		
+		% Check if the library is loaded
+		if ~libisloaded('pl1000')
+		
+			error('PL1000StreamingExample:LibaryNotLoaded', 'Library pl1000.dll not loaded.');
+		
+		end
+		
+	else
+		
+		error('PL1000StreamingExample:OSNotSupported', 'Operating system not supported, please contact support@picotech.com');
+		
+	end
+	
 end
 
 %% Open connection to device
