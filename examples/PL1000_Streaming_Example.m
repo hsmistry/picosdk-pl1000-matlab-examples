@@ -178,7 +178,7 @@ pl1000StreamingExample.nSamplesPerChannel   = pl1000StreamingExample.nSamples / 
 pl1000StreamingExample.pUsForBlock = libpointer('uint32Ptr', pl1000StreamingExample.usForBlock);
 
 pl1000StreamingExample.status.samplingInterval = calllib('pl1000', 'pl1000SetInterval', pl1000StreamingExample.unitHandle, pl1000StreamingExample.pUsForBlock, ...
-                            pl1000StreamingExample.nSamples, pl1000StreamingExample.channels, pl1000StreamingExample.nChannels);
+                            pl1000StreamingExample.nSamplesPerChannel, pl1000StreamingExample.channels, pl1000StreamingExample.nChannels);
 
 if (pl1000StreamingExample.status.samplingInterval == PicoStatus.PICO_OK)
     
