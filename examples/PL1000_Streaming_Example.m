@@ -212,7 +212,7 @@ pl1000StreamingExample.pBuffer              = libpointer('uint16Ptr', zeros(pl10
 
 
 % Start device running
-pl1000StreamingExample.status.run = calllib('pl1000', 'pl1000Run', pl1000StreamingExample.unitHandle, pl1000StreamingExample.nSamples, pl1000StreamingExample.method);
+pl1000StreamingExample.status.run = calllib('pl1000', 'pl1000Run', pl1000StreamingExample.unitHandle, pl1000StreamingExample.nSamplesPerChannel, pl1000StreamingExample.method);
 
 if (pl1000StreamingExample.status.samplingInterval == PicoStatus.PICO_OK)
     
